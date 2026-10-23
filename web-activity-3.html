@@ -1,0 +1,645 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Spoon | Restaurant & Cafe</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background-color: #fffaf2;
+            color: #30251f;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            background: #2b211d;
+            color: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 28px;
+            color: #e8bc72;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #e8bc72;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 540px;
+            background:
+                linear-gradient(rgba(25,15,10,0.65),
+                rgba(25,15,10,0.65)),
+                url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=85");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 50px 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 65px);
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #d9a44e;
+            color: #241913;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #f0cc8a;
+            transform: translateY(-3px);
+        }
+
+        /* Common Sections */
+        section {
+            padding: 65px 8%;
+            scroll-margin-top: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 35px;
+            color: #70452c;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            margin-bottom: 35px;
+            color: #77665a;
+        }
+
+        /* Menu */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 18px #00000012;
+            transition: 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 25px #00000020;
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .menu-info {
+            padding: 18px;
+        }
+
+        .menu-info h3 {
+            margin-bottom: 8px;
+            color: #70452c;
+        }
+
+        .price {
+            color: #a66b1e;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* About */
+        .about {
+            background: #f0e5d5;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 35px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .about h2 {
+            font-size: 34px;
+            color: #70452c;
+            margin-bottom: 15px;
+        }
+
+        /* Chef Profiles */
+        .chef-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            text-align: center;
+        }
+
+        .chef-card {
+            background: white;
+            padding: 18px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #00000010;
+        }
+
+        .chef-card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 12px;
+        }
+
+        .chef-card h3 {
+            color: #70452c;
+        }
+
+        /* Testimonials */
+        .reviews {
+            background: #2b211d;
+            color: white;
+        }
+
+        .reviews .section-title {
+            color: #e8bc72;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+        }
+
+        .review {
+            background: #40312a;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #e8bc72;
+        }
+
+        .stars {
+            color: #ffd477;
+            font-size: 20px;
+        }
+
+        /* Opening Hours and Location */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .detail-card {
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #00000010;
+        }
+
+        .detail-card h3 {
+            color: #70452c;
+            margin-bottom: 15px;
+        }
+
+        .detail-card p {
+            margin: 8px 0;
+        }
+
+        /* Reservation Form */
+        .reservation {
+            background: #f0e5d5;
+        }
+
+        form {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px #00000012;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d4c4b4;
+            border-radius: 5px;
+            font: inherit;
+            background: #fffdf9;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: 2px solid #d9a44e;
+            border-color: transparent;
+        }
+
+        form .btn {
+            margin-top: 20px;
+            width: 100%;
+            font: inherit;
+        }
+
+        /* Footer */
+        footer {
+            background: #2b211d;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        footer span {
+            color: #e8bc72;
+        }
+
+        /* Mobile Responsive Design */
+        @media (max-width: 600px) {
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            section {
+                padding: 45px 5%;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="logo">🍽 Golden Spoon</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#menu">Menu</a>
+            <a href="#chefs">Chefs</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#contact">Contact</a>
+            <a href="#reservation">Book a Table</a>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section class="hero" id="home">
+        <div>
+            <h1>Welcome to Golden Spoon</h1>
+            <p>Delicious Food, Warm Hospitality & Beautiful Memories</p>
+            <a href="#menu" class="btn">Explore Our Menu</a>
+            <a href="#reservation" class="btn">Reserve a Table</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div>
+            <h2>A Taste of Happiness</h2>
+            <p>
+                Welcome to Golden Spoon, where every meal is prepared
+                with passion and care. We combine fresh ingredients,
+                traditional recipes, and modern cooking techniques
+                to bring you an unforgettable dining experience.
+            </p>
+            <br>
+            <p>
+                Whether you are enjoying a family dinner, meeting
+                friends, or relaxing with a cup of coffee, our
+                restaurant is the perfect place for you.
+            </p>
+            <br>
+            <a href="#reservation" class="btn">Visit Us Today</a>
+        </div>
+
+        <img
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80"
+            alt="Warm and elegant restaurant interior">
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <h2 class="section-title">Our Special Menu</h2>
+        <p class="subtitle">Fresh ingredients, amazing flavours!</p>
+
+        <div class="menu-grid">
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=700&q=80"
+                     alt="Fresh gourmet food">
+                <div class="menu-info">
+                    <h3>Chef's Special Platter</h3>
+                    <p>A delicious combination of fresh flavours.</p>
+                    <p class="price">₹299</p>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=700&q=80"
+                     alt="Italian pasta">
+                <div class="menu-info">
+                    <h3>Creamy Italian Pasta</h3>
+                    <p>Rich, creamy pasta with herbs and cheese.</p>
+                    <p class="price">₹249</p>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80"
+                     alt="Gourmet burger">
+                <div class="menu-info">
+                    <h3>Classic Cheese Burger</h3>
+                    <p>Juicy burger with cheese and fresh vegetables.</p>
+                    <p class="price">₹199</p>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=700&q=80"
+                     alt="Freshly brewed coffee">
+                <div class="menu-info">
+                    <h3>Signature Cafe Coffee</h3>
+                    <p>Freshly brewed coffee with a smooth finish.</p>
+                    <p class="price">₹129</p>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=700&q=80"
+                     alt="Ice cream dessert">
+                <div class="menu-info">
+                    <h3>Chocolate Dessert</h3>
+                    <p>A sweet treat for every dessert lover.</p>
+                    <p class="price">₹149</p>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80"
+                     alt="Fresh healthy salad">
+                <div class="menu-info">
+                    <h3>Garden Fresh Salad</h3>
+                    <p>Crisp vegetables with a refreshing dressing.</p>
+                    <p class="price">₹179</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Chef Profiles -->
+    <section id="chefs" class="about">
+        <div>
+            <h2 class="section-title">Meet Our Chefs</h2>
+            <p class="subtitle">Passion and creativity in every dish.</p>
+
+            <div class="chef-grid">
+                <div class="chef-card">
+                    <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=400&q=80"
+                         alt="Head chef">
+                    <h3>Chef Arjun</h3>
+                    <p>Head Chef</p>
+                </div>
+
+                <div class="chef-card">
+                    <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&w=400&q=80"
+                         alt="Pastry chef">
+                    <h3>Chef Priya</h3>
+                    <p>Pastry Specialist</p>
+                </div>
+
+                <div class="chef-card">
+                    <img src="https://images.unsplash.com/photo-1574966739987-65e38d9acb9b?auto=format&fit=crop&w=400&q=80"
+                         alt="Restaurant chef">
+                    <h3>Chef Rahul</h3>
+                    <p>Continental Chef</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section class="reviews" id="reviews">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="subtitle">Experiences that make us smile.</p>
+
+        <div class="review-grid">
+            <div class="review">
+                <p class="stars">★★★★★</p>
+                <p>"Amazing food, friendly staff, and a wonderful atmosphere!"</p>
+                <br>
+                <h3>— Ananya</h3>
+            </div>
+
+            <div class="review">
+                <p class="stars">★★★★★</p>
+                <p>"The coffee and desserts were delicious. A lovely cafe!"</p>
+                <br>
+                <h3>— Kiran</h3>
+            </div>
+
+            <div class="review">
+                <p class="stars">★★★★★</p>
+                <p>"A perfect place for family dinners and special occasions."</p>
+                <br>
+                <h3>— Rahul</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opening Hours and Location -->
+    <section id="contact">
+        <h2 class="section-title">Visit Our Restaurant</h2>
+        <p class="subtitle">We look forward to welcoming you!</p>
+
+        <div class="details-grid">
+            <div class="detail-card">
+                <h3>🕒 Opening Hours</h3>
+                <p>Monday – Friday: 10 AM – 10 PM</p>
+                <p>Saturday: 9 AM – 11 PM</p>
+                <p>Sunday: 9 AM – 10 PM</p>
+            </div>
+
+            <div class="detail-card">
+                <h3>📍 Our Location</h3>
+                <p>Golden Spoon Restaurant & Cafe</p>
+                <p>Jubilee Hills, Hyderabad, Telangana</p>
+                <p>Phone: +91 98765 43210</p>
+                <p>Email: hello@goldenspoon.example</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Form -->
+    <section class="reservation" id="reservation">
+        <h2 class="section-title">Reserve Your Table</h2>
+        <p class="subtitle">Plan your next delicious experience.</p>
+
+        <form action="#" method="get"
+              onsubmit="event.preventDefault();
+              alert('Thank you! Your reservation request has been received. This is a demo website. Please contact the restaurant to confirm your booking.');">
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name"
+                           placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email"
+                           placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone"
+                           placeholder="Enter phone number"
+                           pattern="[0-9]{10}" maxlength="10" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="guests">Number of Guests</label>
+                    <select id="guests" name="guests" required>
+                        <option value="">Select guests</option>
+                        <option>1 Guest</option>
+                        <option>2 Guests</option>
+                        <option>3 Guests</option>
+                        <option>4 Guests</option>
+                        <option>5 Guests</option>
+                        <option>6 or More Guests</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Reservation Date</label>
+                    <input type="date" id="date" name="date"
+                           min="2026-10-23" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="time">Reservation Time</label>
+                    <select id="time" name="time" required>
+                        <option value="">Select time</option>
+                        <option>10:00 AM</option>
+                        <option>12:00 PM</option>
+                        <option>2:00 PM</option>
+                        <option>4:00 PM</option>
+                        <option>6:00 PM</option>
+                        <option>8:00 PM</option>
+                        <option>9:00 PM</option>
+                    </select>
+                </div>
+
+                <div class="form-group full">
+                    <label for="message">Special Requests</label>
+                    <textarea id="message" name="message" rows="3"
+                              placeholder="Birthday, seating preference, etc."></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="btn">Submit Reservation</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 <span>Golden Spoon Restaurant & Cafe</span></p>
+        <p>Made with care for food lovers ❤️</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineView - Movie Reviews</title>
+
+    <style>
+        /* General Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #10101c;
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        header {
+            background: #19192b;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo {
+            color: #ff4d6d;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #ff4d6d;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 65px 20px;
+            background: linear-gradient(135deg, #30134d, #111827, #511b35);
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 span {
+            color: #ff4d6d;
+        }
+
+        .hero p {
+            color: #ddd;
+            margin-bottom: 25px;
+        }
+
+        .hero a {
+            display: inline-block;
+            background: #ff4d6d;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .hero a:hover {
+            background: #e52e50;
+        }
+
+        /* Main Content */
+        .container {
+            padding: 40px 7%;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 25px;
+            border-left: 5px solid #ff4d6d;
+            padding-left: 12px;
+        }
+
+        /* Movie Grid */
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit, minmax(220px, 1fr)
+            );
+            gap: 25px;
+        }
+
+        /* Movie Cards */
+        .movie-card {
+            background: #1c1c30;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid #303047;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px #ff4d6d35;
+        }
+
+        .poster {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .movie-info {
+            padding: 18px;
+        }
+
+        .movie-info h3 {
+            color: #fff;
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .genre {
+            display: inline-block;
+            color: #ff8da1;
+            background: #38202f;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .date {
+            color: #b9b9cc;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            color: #ffd166;
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .synopsis {
+            color: #d0d0df;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .cast {
+            font-size: 13px;
+            color: #aaaabd;
+            margin-bottom: 12px;
+        }
+
+        .review {
+            border-top: 1px solid #38384d;
+            padding-top: 12px;
+            color: #bfc0d5;
+            font-size: 13px;
+            font-style: italic;
+        }
+
+        /* Review Section */
+        .review-section {
+            background: #19192b;
+            padding: 30px;
+            border-radius: 14px;
+            margin-top: 45px;
+        }
+
+        .review-section h2 {
+            color: #ff718b;
+            margin-bottom: 15px;
+        }
+
+        .review-section p {
+            color: #ddd;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            background: #19192b;
+            padding: 25px 15px;
+            color: #aaaabd;
+            margin-top: 40px;
+        }
+
+        footer span {
+            color: #ff4d6d;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav a {
+                margin: 0 8px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .container {
+                padding: 30px 5%;
+            }
+
+            .poster {
+                height: 320px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="logo">🎬 CineView</div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#movies">Movies</a>
+            <a href="#reviews">Reviews</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Discover. Watch. <span>Review.</span></h1>
+        <p>Your destination for movie ratings, reviews and cinema stories.</p>
+        <a href="#movies">Explore Movies</a>
+    </section>
+
+    <!-- Movies Section -->
+    <main class="container" id="movies">
+
+        <h2 class="section-title">⭐ Popular Movies</h2>
+
+        <div class="movie-grid">
+
+            <!-- Movie 1 -->
+            <article class="movie-card">
+                <img class="poster"
+                    src="https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg"
+                    alt="Oppenheimer movie poster">
+
+                <div class="movie-info">
+                    <h3>Oppenheimer</h3>
+                    <span class="genre">Drama / History</span>
+                    <p class="date">Release: July 21, 2023</p>
+                    <p class="rating">★★★★☆ 8.3/10</p>
+                    <p class="synopsis">
+                        A story about physicist J. Robert Oppenheimer
+                        and his role in developing the atomic bomb.
+                    </p>
+                    <p class="cast">
+                        <b>Cast:</b> Cillian Murphy, Emily Blunt
+                    </p>
+                    <p class="review">
+                        "Powerful performances and impressive filmmaking."
+                    </p>
+                </div>
+            </article>
+
+            <!-- Movie 2 -->
+            <article class="movie-card">
+                <img class="poster"
+                    src="https://image.tmdb.org/t/p/w500/8b8R8l88Qje9dn9OE8PY05Nxl1X.jpg"
+                    alt="Interstellar movie poster">
+
+                <div class="movie-info">
+                    <h3>Interstellar</h3>
+                    <span class="genre">Sci-Fi / Adventure</span>
+                    <p class="date">Release: November 7, 2014</p>
+                    <p class="rating">★★★★★ 8.7/10</p>
+                    <p class="synopsis">
+                        Astronauts travel through space in search
+                        of a new home for humanity.
+                    </p>
+                    <p class="cast">
+                        <b>Cast:</b> Matthew McConaughey, Anne Hathaway
+                    </p>
+                    <p class="review">
+                        "A visually stunning and emotional space adventure."
+                    </p>
+                </div>
+            </article>
+
+            <!-- Movie 3 -->
+            <article class="movie-card">
+                <img class="poster"
+                    src="https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg"
+                    alt="Deadpool and Wolverine movie poster">
+
+                <div class="movie-info">
+                    <h3>Deadpool &amp; Wolverine</h3>
+                    <span class="genre">Action / Comedy</span>
+                    <p class="date">Release: July 26, 2024</p>
+                    <p class="rating">★★★★☆ 7.5/10</p>
+                    <p class="synopsis">
+                        Two unlikely heroes join forces on an
+                        unpredictable multiverse adventure.
+                    </p>
+                    <p class="cast">
+                        <b>Cast:</b> Ryan Reynolds, Hugh Jackman
+                    </p>
+                    <p class="review">
+                        "An energetic superhero adventure with humor."
+                    </p>
+                </div>
+            </article>
+
+            <!-- Movie 4 -->
+            <article class="movie-card">
+                <img class="poster"
+                    src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"
+                    alt="Dune Part Two movie poster">
+
+                <div class="movie-info">
+                    <h3>Dune: Part Two</h3>
+                    <span class="genre">Sci-Fi / Adventure</span>
+                    <p class="date">Release: March 1, 2024</p>
+                    <p class="rating">★★★★☆ 8.5/10</p>
+                    <p class="synopsis">
+                        Paul Atreides joins the Fremen while facing
+                        the future of his family and the universe.
+                    </p>
+                    <p class="cast">
+                        <b>Cast:</b> Timothée Chalamet, Zendaya
+                    </p>
+                    <p class="review">
+                        "Grand visuals and an engaging science-fiction story."
+                    </p>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- Critics Review Section -->
+        <section class="review-section" id="reviews">
+            <h2>📝 Critics' Corner</h2>
+
+            <p>
+                <b>Editor's Choice:</b> Interstellar
+            </p>
+
+            <p>
+                Our featured films bring together science fiction,
+                historical drama, action and adventure.
+                Explore the stories, compare the displayed ratings,
+                and choose your next movie to watch.
+            </p>
+
+            <p>
+                <b>Note:</b> The ratings shown are sample display values
+                for this educational website, not live critic scores.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 <span>CineView</span> | Movie Reviews &amp; Ratings</p>
+        <p>Made with ❤️ for movie lovers</p>
+    </footer>
+
+</body>
+</html>
