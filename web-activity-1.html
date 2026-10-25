@@ -1,0 +1,396 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telugu Movie World</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #10101c;
+    color: white;
+}
+
+header {
+    background: linear-gradient(90deg, #7b2ff7, #f107a3);
+    text-align: center;
+    padding: 30px 15px;
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+nav {
+    background: #202035;
+    padding: 16px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 18px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ff65c3;
+}
+
+.intro {
+    text-align: center;
+    padding: 35px 15px 10px;
+}
+
+.intro h2 {
+    color: #ff65c3;
+    margin-bottom: 12px;
+}
+
+.movie-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+    max-width: 1500px;
+    margin: auto;
+    padding: 30px;
+}
+
+.movie-card {
+    background: #202035;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px #0008;
+    transition: transform 0.3s;
+}
+
+.movie-card:hover {
+    transform: translateY(-8px);
+}
+
+.movie-poster {
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+    display: block;
+    background: #171725;
+}
+
+.movie-info {
+    padding: 18px;
+}
+
+.movie-info h2 {
+    color: #ff65c3;
+    margin-bottom: 12px;
+}
+
+.genre {
+    display: inline-block;
+    background: #7b2ff7;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.movie-info p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 8px;
+    color: #dedee9;
+}
+
+.rating {
+    color: #ffd166;
+    font-size: 17px;
+    margin: 12px 0;
+}
+
+.review {
+    border-top: 1px solid #45455e;
+    padding-top: 12px;
+    font-style: italic;
+}
+
+.review-form {
+    max-width: 650px;
+    margin: 30px auto 50px;
+    padding: 25px;
+    background: #202035;
+    border-radius: 15px;
+}
+
+.review-form h2 {
+    text-align: center;
+    color: #ff65c3;
+    margin-bottom: 20px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 15px;
+    border: 1px solid #555570;
+    border-radius: 7px;
+    background: #151525;
+    color: white;
+    font-size: 15px;
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(90deg, #7b2ff7, #f107a3);
+    border: none;
+    border-radius: 7px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#reviewOutput {
+    margin-top: 15px;
+}
+
+footer {
+    text-align: center;
+    background: #202035;
+    padding: 20px;
+    color: #ccccdd;
+}
+
+@media (max-width: 1100px) {
+    .movie-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 27px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 8px;
+    }
+
+    .movie-container {
+        grid-template-columns: 1fr;
+        padding: 18px;
+    }
+
+    .movie-poster {
+        height: 400px;
+    }
+
+    .review-form {
+        margin: 20px 18px 35px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🎬 Telugu Movie World</h1>
+    <p>Discover Movies • Read Reviews • Share Ratings</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#movies">Movies</a>
+    <a href="#reviews">Write a Review</a>
+</nav>
+
+<section class="intro" id="home">
+    <h2>Popular Telugu Movies</h2>
+    <p>Explore stories, reviews, cast details and ratings.</p>
+</section>
+
+<main class="movie-container" id="movies">
+
+    <!-- MOVIE 1: GODAVARI -->
+    <article class="movie-card">
+        <img class="movie-poster"
+             src="./movies/godavari.jpg"
+             alt="Godavari movie poster">
+
+        <div class="movie-info">
+            <h2>Godavari</h2>
+            <span class="genre">Romance / Drama</span>
+            <p><strong>Release:</strong> 2006</p>
+            <p><strong>Director:</strong> Sekhar Kammula</p>
+            <p><strong>Cast:</strong> Sumanth, Kamalinee Mukherjee</p>
+            <p><strong>Story:</strong> A romantic drama set against the
+            beautiful scenery of the Godavari River.</p>
+            <div class="rating">★★★★☆ 4.2/5</div>
+            <p class="review">A refreshing love story with beautiful
+            music and scenic river landscapes.</p>
+        </div>
+    </article>
+
+    <!-- MOVIE 2: SVSC -->
+    <article class="movie-card">
+        <img class="movie-poster"
+             src="./movies/svsc.jpg"
+             alt="Seethamma Vakitlo Sirimalle Chettu poster">
+
+        <div class="movie-info">
+            <h2>SVSC</h2>
+            <span class="genre">Family / Drama</span>
+            <p><strong>Full Name:</strong> Seethamma Vakitlo Sirimalle Chettu</p>
+            <p><strong>Release:</strong> 2013</p>
+            <p><strong>Director:</strong> Srikanth Addala</p>
+            <p><strong>Cast:</strong> Venkatesh, Mahesh Babu,
+            Anjali, Samantha</p>
+            <p><strong>Story:</strong> A family drama about sibling
+            relationships, kindness and family values.</p>
+            <div class="rating">★★★★☆ 4.3/5</div>
+            <p class="review">A heartwarming family entertainer with
+            memorable performances.</p>
+        </div>
+    </article>
+
+    <!-- MOVIE 3: SITA RAMAM -->
+    <article class="movie-card">
+        <img class="movie-poster"
+             src="./movies/sitaramam.jpg"
+             alt="Sita Ramam movie poster">
+
+        <div class="movie-info">
+            <h2>Sita Ramam</h2>
+            <span class="genre">Romance / Period Drama</span>
+            <p><strong>Release:</strong> 2022</p>
+            <p><strong>Director:</strong> Hanu Raghavapudi</p>
+            <p><strong>Cast:</strong> Dulquer Salmaan, Mrunal Thakur,
+            Rashmika Mandanna</p>
+            <p><strong>Story:</strong> A mysterious letter connects
+            a soldier and a woman in an emotional love story.</p>
+            <div class="rating">★★★★★ 4.7/5</div>
+            <p class="review">A visually beautiful period romance
+            with memorable music.</p>
+        </div>
+    </article>
+
+    <!-- MOVIE 4: HI NANNA -->
+    <article class="movie-card">
+        <img class="movie-poster"
+             src="./movies/hinanna.jpg"
+             alt="Hi Nanna movie poster">
+
+        <div class="movie-info">
+            <h2>Hi Nanna</h2>
+            <span class="genre">Family / Romance</span>
+            <p><strong>Release:</strong> 2023</p>
+            <p><strong>Director:</strong> Shouryuv</p>
+            <p><strong>Cast:</strong> Nani, Mrunal Thakur,
+            Kiara Khanna</p>
+            <p><strong>Story:</strong> A touching story about a father,
+            his daughter and the importance of family bonds.</p>
+            <div class="rating">★★★★★ 4.6/5</div>
+            <p class="review">An emotional family drama with
+            heartfelt performances and lovely music.</p>
+        </div>
+    </article>
+
+</main>
+
+<!-- REVIEW FORM -->
+<section class="review-form" id="reviews">
+    <h2>Write Your Movie Review</h2>
+
+    <form id="movieReviewForm">
+        <label for="username">Your Name</label>
+        <input type="text" id="username"
+               placeholder="Enter your name" required>
+
+        <label for="movie">Select Movie</label>
+        <select id="movie" required>
+            <option value="">Choose a movie</option>
+            <option>Godavari</option>
+            <option>SVSC</option>
+            <option>Sita Ramam</option>
+            <option>Hi Nanna</option>
+        </select>
+
+        <label for="userRating">Your Rating</label>
+        <select id="userRating" required>
+            <option value="">Select stars</option>
+            <option value="5">★★★★★ - Excellent</option>
+            <option value="4">★★★★☆ - Very Good</option>
+            <option value="3">★★★☆☆ - Good</option>
+            <option value="2">★★☆☆☆ - Average</option>
+            <option value="1">★☆☆☆☆ - Poor</option>
+        </select>
+
+        <label for="comment">Your Review</label>
+        <textarea id="comment" rows="4"
+                  placeholder="Write your review..."
+                  required></textarea>
+
+        <button type="submit">Submit Review</button>
+    </form>
+
+    <div id="reviewOutput"></div>
+</section>
+
+<footer>
+    <p>© 2026 Telugu Movie World | Movie Review Website</p>
+    <p>Created using HTML5, CSS3 and JavaScript</p>
+</footer>
+
+<script>
+document.getElementById("movieReviewForm").addEventListener(
+    "submit", function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById("username").value;
+        const movie = document.getElementById("movie").value;
+        const rating = Number(
+            document.getElementById("userRating").value
+        );
+        const comment = document.getElementById("comment").value;
+
+        const review = document.createElement("div");
+        review.style.background = "#292943";
+        review.style.padding = "15px";
+        review.style.marginTop = "15px";
+        review.style.borderRadius = "8px";
+
+        const heading = document.createElement("h3");
+        heading.style.color = "#ff65c3";
+        heading.textContent = name + " reviewed " + movie;
+
+        const stars = document.createElement("p");
+        stars.style.color = "#ffd166";
+        stars.textContent = "Rating: " +
+            "★".repeat(rating) + "☆".repeat(5 - rating);
+
+        const text = document.createElement("p");
+        text.style.marginTop = "8px";
+        text.textContent = comment;
+
+        review.append(heading, stars, text);
+        document.getElementById("reviewOutput").prepend(review);
+
+        this.reset();
+    }
+);
+</script>
+
+</body>
+</html>
