@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TravelVista | Explore India Holidays</title>
+
+    <meta name="description"
+          content="Discover beautiful Indian destinations with TravelVista.
+          Explore holiday packages for Ooty, Darjeeling, Meghalaya and Agra.">
+
+    <style>
+        /* GENERAL STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8fafc;
+            color: #263238;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 34px;
+            color: #123c69;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #64748b;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff8c42;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #e76f19;
+            transform: translateY(-2px);
+        }
+
+        /* HEADER */
+
+        header {
+            background: white;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            min-height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: #123c69;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #ff8c42;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff8c42;
+        }
+
+        .menu-toggle {
+            display: none;
+            border: none;
+            background: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* HERO SECTION */
+
+        .hero {
+            min-height: 570px;
+            display: flex;
+            align-items: center;
+            color: white;
+            background:
+                linear-gradient(
+                    rgba(5, 25, 45, 0.65),
+                    rgba(5, 25, 45, 0.45)
+                ),
+                url("https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=2000&q=85")
+                center/cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            padding: 70px 0;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.18);
+            padding: 8px 16px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 28px;
+            max-width: 600px;
+        }
+
+        /* QUICK SEARCH */
+
+        .search-section {
+            margin-top: -35px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .search-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            align-items: end;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d5dde5;
+            border-radius: 6px;
+            font-size: 14px;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: 2px solid #ffbf91;
+            border-color: #ff8c42;
+        }
+
+        /* DESTINATIONS */
+
+        .destinations {
+            background: #f8fafc;
+        }
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .destination-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.14);
+        }
+
+        .destination-card img {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .destination-info {
+            padding: 20px;
+        }
+
+        .destination-info h3 {
+            font-size: 22px;
+            color: #123c69;
+            margin-bottom: 8px;
+        }
+
+        .destination-info p {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .destination-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #e76f19;
+            font-size: 17px;
+        }
+
+        .small-btn {
+            padding: 9px 13px;
+            font-size: 13px;
+        }
+
+        /* PACKAGES */
+
+        .packages {
+            background: white;
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .package-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            transition: 0.3s;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .package-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .package-content {
+            padding: 20px;
+        }
+
+        .duration {
+            display: inline-block;
+            background: #e8f3ff;
+            color: #123c69;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .package-content h3 {
+            color: #123c69;
+            margin-bottom: 10px;
+        }
+
+        .package-content ul {
+            padding-left: 20px;
+            margin: 12px 0;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .package-price {
+            font-size: 23px;
+            color: #e76f19;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .package-price small {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: normal;
+        }
+
+        /* ITINERARIES */
+
+        .itinerary-section {
+            background: #f0f6fb;
+        }
+
+        .itinerary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .itinerary-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #ff8c42;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .itinerary-card h3 {
+            color: #123c69;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .day {
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .day:last-child {
+            border-bottom: none;
+        }
+
+        .day strong {
+            color: #e76f19;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* WHY CHOOSE US */
+
+        .why-us {
+            background: white;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            background: #f8fafc;
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            color: #123c69;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* INQUIRY FORM */
+
+        .inquiry-section {
+            background:
+                linear-gradient(
+                    rgba(18, 60, 105, 0.94),
+                    rgba(18, 60, 105, 0.94)
+                ),
+                url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80")
+                center/cover;
+        }
+
+        .inquiry-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .inquiry-text {
+            color: white;
+        }
+
+        .inquiry-text h2 {
+            font-size: 38px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .inquiry-text p {
+            margin-bottom: 20px;
+            color: #e2e8f0;
+        }
+
+        .inquiry-text ul {
+            list-style: none;
+        }
+
+        .inquiry-text li {
+            margin-bottom: 12px;
+        }
+
+        .inquiry-form {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        .inquiry-form h3 {
+            font-size: 25px;
+            color: #123c69;
+            margin-bottom: 20px;
+        }
+
+        .inquiry-form .form-group {
+            margin-bottom: 16px;
+        }
+
+        .inquiry-form textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .inquiry-form .btn {
+            width: 100%;
+        }
+
+        .form-message {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #166534;
+            overflow-wrap: anywhere;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #0b2239;
+            color: white;
+            padding: 45px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 35px;
+            margin-bottom: 30px;
+        }
+
+        .footer-about p {
+            color: #cbd5e1;
+            margin-top: 15px;
+            max-width: 400px;
+        }
+
+        .footer-links h3 {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #cbd5e1;
+            margin-bottom: 8px;
+        }
+
+        .footer-links a:hover {
+            color: #ff8c42;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #334155;
+            padding-top: 20px;
+            color: #cbd5e1;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE DESIGN */
+
+        @media (max-width: 1000px) {
+            .destination-grid,
+            .package-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .search-box {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .navbar {
+                min-height: 70px;
+                flex-wrap: wrap;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                width: 100%;
+                padding-bottom: 15px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 10px 0;
+            }
+
+            .hero {
+                min-height: 500px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .search-box,
+            .destination-grid,
+            .package-grid,
+            .itinerary-grid,
+            .features,
+            .inquiry-layout,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-section {
+                margin-top: 20px;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .inquiry-text h2 {
+                font-size: 30px;
+            }
+
+            .destination-card img {
+                height: 240px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container navbar">
+
+            <a href="#home" class="logo">
+                Travel<span>Vista</span>
+            </a>
+
+            <button class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Toggle navigation"
+                    aria-expanded="false">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#itineraries">Itineraries</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact" class="btn">Plan My Trip</a></li>
+            </ul>
+
+        </div>
+    </header>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+
+            <span class="hero-tag">Your Journey, Our Passion</span>
+
+            <h1>
+                Discover India.<br>
+                Create Beautiful Memories.
+            </h1>
+
+            <p>
+                Explore misty mountains, peaceful hill stations,
+                breathtaking waterfalls and world-famous monuments
+                with our carefully planned holiday packages.
+            </p>
+
+            <a href="#destinations" class="btn">
+                Explore Destinations →
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- QUICK SEARCH -->
+    <div class="container search-section">
+        <form class="search-box" id="searchForm">
+
+            <div class="form-group">
+                <label for="searchDestination">Choose Destination</label>
+
+                <select id="searchDestination" required>
+                    <option value="">Select a place</option>
+                    <option value="Ooty">Ooty</option>
+                    <option value="Darjeeling">Darjeeling</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Agra">Agra</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="travelDate">Travel Date</label>
+                <input type="date" id="travelDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="travelers">Travelers</label>
+                <select id="travelers" required>
+                    <option value="1">1 Person</option>
+                    <option value="2" selected>2 People</option>
+                    <option value="3">3 People</option>
+                    <option value="4">4 People</option>
+                    <option value="5">5 People</option>
+                    <option value="6">6+ People</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">
+                Find Packages
+            </button>
+
+        </form>
+    </div>
+
+
+    <!-- POPULAR DESTINATIONS -->
+    <section class="destinations" id="destinations">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Popular Destinations</h2>
+                <p>Discover four beautiful places for your next holiday.</p>
+            </div>
+
+            <div class="destination-grid">
+
+                <!-- OOTY -->
+                <article class="destination-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80"
+                        alt="Green hills and scenic nature"
+                        loading="lazy">
+
+                    <div class="destination-info">
+                        <h3>Ooty</h3>
+
+                        <p>
+                            Explore the Queen of Hill Stations,
+                            tea gardens, botanical gardens and
+                            scenic mountain views.
+                        </p>
+
+                        <div class="destination-bottom">
+                            <span class="price">₹8,999</span>
+                            <a href="#contact"
+                               class="btn small-btn"
+                               data-destination="Ooty">
+                                Explore
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- DARJEELING -->
+                <article class="destination-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80"
+                        alt="Beautiful mountain landscape"
+                        loading="lazy">
+
+                    <div class="destination-info">
+                        <h3>Darjeeling</h3>
+
+                        <p>
+                            Enjoy Himalayan scenery, famous tea
+                            gardens, mountain railways and
+                            breathtaking sunrise views.
+                        </p>
+
+                        <div class="destination-bottom">
+                            <span class="price">₹12,999</span>
+                            <a href="#contact"
+                               class="btn small-btn"
+                               data-destination="Darjeeling">
+                                Explore
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- MEGHALAYA -->
+                <article class="destination-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=800&q=80"
+                        alt="Lush green forest"
+                        loading="lazy">
+
+                    <div class="destination-info">
+                        <h3>Meghalaya</h3>
+
+                        <p>
+                            Discover beautiful waterfalls, green
+                            valleys, living root bridges and
+                            peaceful natural landscapes.
+                        </p>
+
+                        <div class="destination-bottom">
+                            <span class="price">₹14,999</span>
+                            <a href="#contact"
+                               class="btn small-btn"
+                               data-destination="Meghalaya">
+                                Explore
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- AGRA -->
+                <article class="destination-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80"
+                        alt="Taj Mahal in Agra"
+                        loading="lazy">
+
+                    <div class="destination-info">
+                        <h3>Agra</h3>
+
+                        <p>
+                            Visit the magnificent Taj Mahal,
+                            explore historic forts and experience
+                            India's rich heritage.
+                        </p>
+
+                        <div class="destination-bottom">
+                            <span class="price">₹5,999</span>
+                            <a href="#contact"
+                               class="btn small-btn"
+                               data-destination="Agra">
+                                Explore
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- HOLIDAY PACKAGES -->
+    <section class="packages" id="packages">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Our Holiday Packages</h2>
+                <p>
+                    Choose a package that matches your budget
+                    and travel plans.
+                </p>
+            </div>
+
+            <div class="package-grid">
+
+                <!-- OOTY PACKAGE -->
+                <article class="package-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80"
+                        alt="Forest landscape in a hill station"
+                        loading="lazy">
+
+                    <div class="package-content">
+
+                        <span class="duration">3 Days / 2 Nights</span>
+
+                        <h3>Ooty Hill Station Escape</h3>
+
+                        <p>Relax among beautiful hills and tea gardens.</p>
+
+                        <ul>
+                            <li>Botanical Garden</li>
+                            <li>Ooty Lake</li>
+                            <li>Doddabetta Peak</li>
+                            <li>Tea garden visit</li>
+                        </ul>
+
+                        <div class="package-price">
+                            ₹8,999 <small>/ person</small>
+                        </div>
+
+                        <a href="#contact"
+                           class="btn"
+                           data-destination="Ooty">
+                            Book Package
+                        </a>
+
+                    </div>
+                </article>
+
+
+                <!-- DARJEELING PACKAGE -->
+                <article class="package-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80"
+                        alt="Majestic mountain peaks"
+                        loading="lazy">
+
+                    <div class="package-content">
+
+                        <span class="duration">4 Days / 3 Nights</span>
+
+                        <h3>Darjeeling Mountain Tour</h3>
+
+                        <p>Experience mountain beauty and tea estates.</p>
+
+                        <ul>
+                            <li>Tiger Hill sunrise</li>
+                            <li>Batasia Loop</li>
+                            <li>Darjeeling tea gardens</li>
+                            <li>Peaceful mountain views</li>
+                        </ul>
+
+                        <div class="package-price">
+                            ₹12,999 <small>/ person</small>
+                        </div>
+
+                        <a href="#contact"
+                           class="btn"
+                           data-destination="Darjeeling">
+                            Book Package
+                        </a>
+
+                    </div>
+                </article>
+
+
+                <!-- MEGHALAYA PACKAGE -->
+                <article class="package-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=800&q=80"
+                        alt="Beautiful green natural scenery"
+                        loading="lazy">
+
+                    <div class="package-content">
+
+                        <span class="duration">5 Days / 4 Nights</span>
+
+                        <h3>Meghalaya Nature Adventure</h3>
+
+                        <p>Explore waterfalls, caves and green valleys.</p>
+
+                        <ul>
+                            <li>Shillong sightseeing</li>
+                            <li>Cherrapunji waterfalls</li>
+                            <li>Living root bridge excursion</li>
+                            <li>Dawki river visit</li>
+                        </ul>
+
+                        <div class="package-price">
+                            ₹14,999 <small>/ person</small>
+                        </div>
+
+                        <a href="#contact"
+                           class="btn"
+                           data-destination="Meghalaya">
+                            Book Package
+                        </a>
+
+                    </div>
+                </article>
+
+
+                <!-- AGRA PACKAGE -->
+                <article class="package-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80"
+                        alt="Taj Mahal monument"
+                        loading="lazy">
+
+                    <div class="package-content">
+
+                        <span class="duration">2 Days / 1 Night</span>
+
+                        <h3>Agra Heritage Getaway</h3>
+
+                        <p>Discover world-famous monuments and history.</p>
+
+                        <ul>
+                            <li>Taj Mahal visit</li>
+                            <li>Agra Fort</li>
+                            <li>Local sightseeing</li>
+                            <li>Heritage exploration</li>
+                        </ul>
+
+                        <div class="package-price">
+                            ₹5,999 <small>/ person</small>
+                        </div>
+
+                        <a href="#contact"
+                           class="btn"
+                           data-destination="Agra">
+                            Book Package
+                        </a>
+
+                    </div>
+                </article>
+
+            </div>
+
+            <p style="text-align:center; margin-top:25px; color:#64748b;">
+                *Prices are illustrative starting prices per person.
+                Actual prices depend on travel dates, accommodation,
+                transport and availability.
+            </p>
+
+        </div>
+    </section>
+
+
+    <!-- ITINERARIES -->
+    <section class="itinerary-section" id="itineraries">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Sample Travel Itineraries</h2>
+                <p>Plan your journey with our suggested day-by-day schedules.</p>
+            </div>
+
+            <div class="itinerary-grid">
+
+                <!-- OOTY ITINERARY -->
+                <article class="itinerary-card">
+
+                    <h3>🌿 Ooty – 3 Days</h3>
+
+                    <div class="day">
+                        <strong>Day 1: Arrival and Sightseeing</strong>
+                        Arrive in Ooty, check into your hotel,
+                        visit Ooty Lake and enjoy a relaxing evening.
+                    </div>
+
+                    <div class="day">
+                        <strong>Day 2: Hills and Gardens</strong>
+                        Explore the Botanical Garden, Doddabetta Peak
+                        and scenic tea gardens.
+                    </div>
+
+                    <div class="day">
+                        <strong>Day 3: Local Exploration</strong>
+                        Enjoy local shopping, take photographs
+                        and depart after breakfast.
+                    </div>
+
+                </article>
+
+
+                <!-- DARJEELING ITINERARY -->
+                <article class="itinerary-card">
+
+                    <h3>🏔️ Darjeeling – 4 Days</h3>
+
+                    <div class="day">
+                        <strong>Day 1: Arrival</strong>
+                        Arrive in Darjeeling, check into your hotel
+                        and explore the local market.
+                    </div>
+
+                    <div class="day">
+                        <strong>Day 2: Sunrise and Sightseeing</strong>
+                        Visit Tiger Hill, Batasia Loop and
+                        Ghoom Monastery.
+                    </div>
+
+                    <div class="day">
+                        <strong>Day 3: Tea Gardens</strong>
+                        Explore tea estates and enjoy scenic
+                        Himalayan viewpoints.
+                    </div>
+
+                    <div class="day">
+                        <strong>Day 4: Departure</strong>
+                        Enjoy breakfast, visit a local attraction
+                        if time permits, and depart.
+                    </div>
+
+                </article>
+
+
+                <!-- MEGHALAYA ITINERARY -->
+                <article class="itinerary-card">
+
+                    <h3>🌳 Meghalaya – 5 Days</h3>
+
+                    <div class="day">
+                        <strong>Day 1: Shillong</strong>
+                        Arrive in Shillong, check into your hotel
+                        and explore the city.
+                    </div>
+
+                    <div class="day">
+                        <strong>Day 2: Cherrapunji</strong>
+                        Visit waterfalls, caves and scenic
+                        viewpoints around Cherrapunji.
+                    </div>
+
+                    <div class="day">
+                        <strong>Day 3: Living Root Bridges</strong>
+                        Explore a living root bridge, subject to
+                        route conditions and walking requirements.
+                    </div>
+
+                    <div class="day">
+                        <strong>Day 4: Dawki and Mawlynnong</strong>
+                        Discover the Dawki river area and
+                        Mawlynnong village.
+                    </div>
+
+                    <div class="day">
+                        <strong>Day 5: Departure</strong>
+                        Enjoy breakfast and return according
+                        to your onward travel arrangements.
+                    </div>
+
+                </article>
+
+
+                <!-- AGRA ITINERARY -->
+                <article class="itinerary-card">
+
+                    <h3>🏛️ Agra – 2 Days</h3>
+
+                    <div class="day">
+                        <strong>Day 1: Taj Mahal and Agra Fort</strong>
+                        Visit the Taj Mahal and Agra Fort.
+                        Explore local markets in the evening.
+                    </div>
+
+                    <div class="day">
+                        <strong>Day 2: Heritage and Departure</strong>
+                        Visit another local attraction if time permits,
+                        then depart after breakfast.
+                    </div>
+
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ABOUT US -->
+    <section class="why-us" id="about">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Why Choose TravelVista?</h2>
+                <p>We make planning your next holiday simple and convenient.</p>
+            </div>
+
+            <div class="features">
+
+                <div class="feature">
+                    <div class="feature-icon">🧳</div>
+                    <h3>Handpicked Packages</h3>
+                    <p>
+                        Explore thoughtfully planned travel packages
+                        for different interests and budgets.
+                    </p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">💰</div>
+                    <h3>Clear Pricing</h3>
+                    <p>
+                        Review starting prices and package durations
+                        before sending your travel inquiry.
+                    </p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>Memorable Experiences</h3>
+                    <p>
+                        Discover natural landscapes, cultural attractions
+                        and famous Indian destinations.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CONTACT / BOOKING INQUIRY -->
+    <section class="inquiry-section" id="contact">
+        <div class="container inquiry-layout">
+
+            <div class="inquiry-text">
+
+                <h2>Let's Plan Your Next Adventure!</h2>
+
+                <p>
+                    Tell us where you want to go, when you want to travel
+                    and how many people are joining you.
+                </p>
+
+                <ul>
+                    <li>✓ Choose from four beautiful destinations</li>
+                    <li>✓ Request a customized holiday package</li>
+                    <li>✓ Share your travel preferences</li>
+                    <li>✓ Plan your next memorable journey</li>
+                </ul>
+
+            </div>
+
+
+            <form class="inquiry-form" id="inquiryForm">
+
+                <h3>Travel Inquiry Form</h3>
+
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter your phone number"
+                        autocomplete="tel"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="destination">Preferred Destination *</label>
+
+                    <select id="destination" name="destination" required>
+                        <option value="">Select Destination</option>
+                        <option value="Ooty">Ooty</option>
+                        <option value="Darjeeling">Darjeeling</option>
+                        <option value="Meghalaya">Meghalaya</option>
+                        <option value="Agra">Agra</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Preferred Travel Date *</label>
+                    <input
+                        type="date"
+                        id="date"
+                        name="date"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="people">Number of Travelers *</label>
+
+                    <select id="people" name="people" required>
+                        <option value="1">1 Person</option>
+                        <option value="2" selected>2 People</option>
+                        <option value="3">3 People</option>
+                        <option value="4">4 People</option>
+                        <option value="5">5 People</option>
+                        <option value="6">6 People</option>
+                        <option value="7+">7 or More People</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Additional Requirements</label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Tell us your budget, preferred hotel or special requests"></textarea>
+                </div>
+
+                <button type="submit" class="btn">
+                    Submit Travel Inquiry
+                </button>
+
+                <p class="form-message" id="formMessage" role="status"></p>
+
+            </form>
+
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-about">
+                    <a href="#home" class="logo" style="color:white;">
+                        Travel<span>Vista</span>
+                    </a>
+
+                    <p>
+                        Discover beautiful destinations, explore new
+                        experiences and plan memorable holidays across India.
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#destinations">Destinations</a>
+                    <a href="#packages">Holiday Packages</a>
+                    <a href="#itineraries">Itineraries</a>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Destinations</h3>
+                    <a href="#destinations">Ooty</a>
+                    <a href="#destinations">Darjeeling</a>
+                    <a href="#destinations">Meghalaya</a>
+                    <a href="#destinations">Agra</a>
+                </div>
+
+            </div>
+
+            <div class="copyright">
+                © <span id="year"></span> TravelVista.
+                All rights reserved.
+            </div>
+
+        </div>
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // MOBILE NAVIGATION
+
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("active");
+
+            menuToggle.setAttribute("aria-expanded", isOpen);
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+        });
+
+        // CLOSE MOBILE MENU AFTER CLICKING A LINK
+
+        document.querySelectorAll(".nav-links a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        // SET MINIMUM DATE TO TODAY
+
+        const today = new Date();
+        const localToday = new Date(
+            today.getTime() - today.getTimezoneOffset() * 60000
+        ).toISOString().split("T")[0];
+
+        document.getElementById("travelDate").min = localToday;
+        document.getElementById("date").min = localToday;
+
+        // QUICK PACKAGE SEARCH
+
+        document.getElementById("searchForm").addEventListener(
+            "submit",
+            function (event) {
+                event.preventDefault();
+
+                const destination =
+                    document.getElementById("searchDestination").value;
+
+                const date =
+                    document.getElementById("travelDate").value;
+
+                const people =
+                    document.getElementById("travelers").value;
+
+                if (!destination || !date || !people) {
+                    alert("Please complete all search fields.");
+                    return;
+                }
+
+                document.getElementById("destination").value = destination;
+                document.getElementById("date").value = date;
+                document.getElementById("people").value =
+                    Number(people) > 6 ? "7+" : people;
+
+                document.getElementById("contact").scrollIntoView({
+                    behavior: "smooth"
+                });
+
+                document.getElementById("name").focus({
+                    preventScroll: true
+                });
+            }
+        );
+
+        // FILL DESTINATION WHEN A PACKAGE BUTTON IS CLICKED
+
+        document.querySelectorAll("[data-destination]").forEach(
+            function (button) {
+                button.addEventListener("click", function () {
+                    const destination = this.dataset.destination;
+
+                    document.getElementById("destination").value =
+                        destination;
+                });
+            }
+        );
+
+        // INQUIRY FORM DEMO
+
+        document.getElementById("inquiryForm").addEventListener(
+            "submit",
+            function (event) {
+                event.preventDefault();
+
+                const name = document.getElementById("name").value.trim();
+                const message = document.getElementById("formMessage");
+
+                if (!name) {
+                    message.textContent = "Please enter your name.";
+                    return;
+                }
+
+                message.textContent =
+                    "Thank you, " + name +
+                    "! Your form has been validated successfully. " +
+                    "This demo does not send your inquiry to a travel agency.";
+
+                // A real website needs a backend or form service
+                // to securely send and store booking inquiries.
+            }
+        );
+
+        // AUTOMATIC COPYRIGHT YEAR
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
+
+</body>
+</html>
