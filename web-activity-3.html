@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Taste Restaurant & Cafe</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: #fffaf2;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #24150f;
+            color: white;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            color: #e8bd76;
+            font-size: 28px;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #e8bd76;
+        }
+
+        .hero {
+            min-height: 500px;
+            background:
+                linear-gradient(#0008, #0008),
+                url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=85");
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 30px;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            color: #f5d49b;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #a66a2c;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+        }
+
+        .btn:hover {
+            background: #77451d;
+        }
+
+        section {
+            padding: 55px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 34px;
+            color: #754321;
+            margin-bottom: 12px;
+        }
+
+        .section-description {
+            text-align: center;
+            color: #777;
+            margin-bottom: 35px;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px #00000012;
+            transition: transform 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .menu-info {
+            padding: 20px;
+        }
+
+        .menu-info h3 {
+            color: #754321;
+            margin-bottom: 8px;
+        }
+
+        .menu-info p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .price {
+            color: #a66a2c;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 12px;
+        }
+
+        .special {
+            background: #f0e5d6;
+        }
+
+        .chef-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .chef-card {
+            text-align: center;
+            background: white;
+            border-radius: 10px;
+            padding-bottom: 20px;
+            box-shadow: 0 4px 15px #00000012;
+            overflow: hidden;
+        }
+
+        .chef-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .chef-card h3 {
+            color: #754321;
+            margin-top: 15px;
+        }
+
+        .chef-card p {
+            color: #777;
+            padding: 0 15px;
+        }
+
+        .ambience {
+            background:
+                linear-gradient(#24150fbd, #24150fbd),
+                url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=85");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .ambience h2 {
+            color: #f5d49b;
+        }
+
+        .ambience p {
+            max-width: 750px;
+            margin: 20px auto;
+            font-size: 17px;
+        }
+
+        .testimonial-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 25px;
+            border-left: 4px solid #a66a2c;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px #00000010;
+        }
+
+        .testimonial h3 {
+            color: #754321;
+            margin-top: 15px;
+        }
+
+        .stars {
+            color: #d89b26;
+            margin-bottom: 10px;
+        }
+
+        .reservation {
+            background: #f0e5d6;
+        }
+
+        form {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #00000012;
+        }
+
+        label {
+            display: block;
+            margin: 12px 0 6px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+            font-family: Arial, sans-serif;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        form button {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .details-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            text-align: center;
+        }
+
+        .detail-box {
+            padding: 25px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px #00000010;
+        }
+
+        .detail-box h3 {
+            color: #754321;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: #24150f;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        footer h2 {
+            color: #e8bd76;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                justify-content: center;
+                text-align: center;
+                gap: 15px;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .hero h2 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 27px;
+            }
+
+            section {
+                padding: 40px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🍽 Royal Taste</h1>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#chefs">Our Chefs</a>
+            <a href="#ambience">Ambience</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#reservation">Reservation</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h2>Welcome to Royal Taste</h2>
+        <p>Delicious Food, Beautiful Moments, Wonderful Memories</p>
+        <p>Experience the perfect blend of taste, tradition and elegance.</p>
+        <a href="#menu" class="btn">Explore Our Menu</a>
+    </section>
+
+    <section id="menu">
+        <h2 class="section-title">Our Special Menu</h2>
+        <p class="section-description">
+            Fresh ingredients, authentic flavours and unforgettable taste.
+        </p>
+
+        <div class="menu-container">
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=700&q=80"
+                     alt="Fresh vegetable pizza">
+                <div class="menu-info">
+                    <h3>Veggie Pizza</h3>
+                    <p>Delicious pizza topped with fresh vegetables and cheese.</p>
+                    <div class="price">₹249</div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80"
+                     alt="Gourmet burger">
+                <div class="menu-info">
+                    <h3>Classic Burger</h3>
+                    <p>A tasty burger served with fresh vegetables and sauce.</p>
+                    <div class="price">₹199</div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=700&q=80"
+                     alt="Noodles in a bowl">
+                <div class="menu-info">
+                    <h3>Hakka Noodles</h3>
+                    <p>Hot noodles tossed with vegetables and special spices.</p>
+                    <div class="price">₹179</div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=700&q=80"
+                     alt="Sweet dessert">
+                <div class="menu-info">
+                    <h3>Chocolate Dessert</h3>
+                    <p>A delightful chocolate treat for every sweet lover.</p>
+                    <div class="price">₹149</div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=700&q=80"
+                     alt="Coffee in a cup">
+                <div class="menu-info">
+                    <h3>Cappuccino</h3>
+                    <p>Freshly brewed coffee with creamy milk foam.</p>
+                    <div class="price">₹129</div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=700&q=80"
+                     alt="Refreshing fruit drink">
+                <div class="menu-info">
+                    <h3>Fresh Fruit Mocktail</h3>
+                    <p>A refreshing drink made with fruity flavours.</p>
+                    <div class="price">₹119</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="special" id="chefs">
+        <h2 class="section-title">Meet Our Chefs</h2>
+        <p class="section-description">
+            Passionate chefs creating memorable dishes every day.
+        </p>
+
+        <div class="chef-container">
+
+            <div class="chef-card">
+                <img src="k.jpg"
+                     alt="Professional chef">
+                <h3>Chef Arjun</h3>
+                <p>Head Chef — Specialises in Indian cuisine.</p>
+            </div>
+
+            <div class="chef-card">
+                <img src="s.jpg"
+                     alt="Restaurant chef">
+                <h3>Chef Meera</h3>
+                <p>Pastry Chef — Creates delicious desserts.</p>
+            </div>
+
+            <div class="chef-card">
+                <img src="m.jpg"
+                     alt="Chef preparing food">
+                <h3>Chef Rahul</h3>
+                <p>Specialist Chef — Expert in international dishes.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="ambience" id="ambience">
+        <h2 class="section-title">Our Restaurant Ambience</h2>
+        <p>
+            Enjoy a warm and elegant dining experience with beautiful
+            interiors, comfortable seating, soft lighting and friendly
+            service. Royal Taste is a wonderful place for family dinners,
+            celebrations and relaxing coffee breaks.
+        </p>
+        <a href="#reservation" class="btn">Reserve Your Table</a>
+    </section>
+
+    <section id="reviews">
+        <h2 class="section-title">Customer Testimonials</h2>
+        <p class="section-description">
+            A few sample reviews from our happy customers.
+        </p>
+
+        <div class="testimonial-container">
+
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p>"Wonderful ambience and delicious food. A lovely place
+                   to spend time with family."</p>
+                <h3>Priya Sharma</h3>
+            </div>
+
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p>"The coffee was excellent, and the staff were friendly.
+                   I really enjoyed the experience."</p>
+                <h3>Rahul Kumar</h3>
+            </div>
+
+            <div class="testimonial">
+                <div class="stars">★★★★☆</div>
+                <p>"Beautiful interiors, tasty desserts and a comfortable
+                   atmosphere. Highly enjoyable."</p>
+                <h3>Ananya Reddy</h3>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="reservation" id="reservation">
+        <h2 class="section-title">Reserve a Table</h2>
+        <p class="section-description">
+            Fill in your details to request a table reservation.
+        </p>
+
+        <form action="#" method="post">
+
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name"
+                   placeholder="Enter your full name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email"
+                   placeholder="Enter your email" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone"
+                   placeholder="Enter your phone number" required>
+
+            <label for="date">Reservation Date</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Reservation Time</label>
+            <input type="time" id="time" name="time" required>
+
+            <label for="guests">Number of Guests</label>
+            <select id="guests" name="guests" required>
+                <option value="">Select number of guests</option>
+                <option value="1">1 Guest</option>
+                <option value="2">2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5">5 Guests</option>
+                <option value="6">6 Guests</option>
+                <option value="7+">7 or More Guests</option>
+            </select>
+
+            <label for="requests">Special Requests</label>
+            <textarea id="requests" name="requests"
+                      placeholder="Birthday, anniversary or other requests"></textarea>
+
+            <button type="submit" class="btn">Submit Reservation</button>
+
+        </form>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Visit Our Restaurant</h2>
+        <p class="section-description">
+            We look forward to welcoming you!
+        </p>
+
+        <div class="details-container">
+
+            <div class="detail-box">
+                <h3>📍 Location</h3>
+                <p>Royal Taste Restaurant</p>
+                <p>Main Road, Hyderabad, Telangana</p>
+            </div>
+
+            <div class="detail-box">
+                <h3>🕒 Opening Hours</h3>
+                <p>Monday - Friday: 10 AM - 10 PM</p>
+                <p>Saturday - Sunday: 9 AM - 11 PM</p>
+            </div>
+
+            <div class="detail-box">
+                <h3>☎ Contact Details</h3>
+                <p>Phone: +91 98765 43210</p>
+                <p>Email: info@royaltaste.example</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <h2>🍽 Royal Taste Restaurant & Cafe</h2>
+        <p>Great Food. Great Company. Great Memories.</p>
+        <p>Opening Hearts Through Delicious Food.</p>
+        <p>&copy; 2026 Royal Taste. All Rights Reserved.</p>
+        <p>Student Website Project</p>
+    </footer>
+
+</body>
+</html>
