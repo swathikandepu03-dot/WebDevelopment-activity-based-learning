@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Travels - Travel Agency</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f8fb;
+            color: #333;
+        }
+
+        header {
+            background: #0077b6;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            font-size: 28px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffd166;
+        }
+
+        .hero {
+            min-height: 450px;
+            background:
+                linear-gradient(#0007, #0007),
+                url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 30px;
+        }
+
+        .hero h2 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff9f1c;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #e88900;
+        }
+
+        section {
+            padding: 50px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #0077b6;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .destination-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .destination-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px #0002;
+            transition: transform 0.3s;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .destination-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            color: #0077b6;
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .card-content p {
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: #e76f00;
+            font-size: 21px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .packages {
+            background: #e8f5fc;
+        }
+
+        .itinerary {
+            background: white;
+            border-left: 5px solid #00a6a6;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px #0001;
+        }
+
+        .itinerary h3 {
+            color: #0077b6;
+            margin-bottom: 10px;
+        }
+
+        .inquiry {
+            background: #e8f5fc;
+        }
+
+        form {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #0002;
+        }
+
+        label {
+            display: block;
+            margin: 12px 0 6px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        form .btn {
+            margin-top: 20px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        footer {
+            background: #023047;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                justify-content: center;
+                text-align: center;
+                gap: 15px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 6px;
+            }
+
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+
+            section {
+                padding: 35px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>✈ Dream Travels</h1>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#destinations">Destinations</a>
+            <a href="#packages">Packages</a>
+            <a href="#itinerary">Itinerary</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h2>Explore the World</h2>
+        <p>Your journey begins with Dream Travels!</p>
+        <p>Discover beautiful places and unforgettable experiences.</p>
+        <a href="#destinations" class="btn">Explore Destinations</a>
+    </section>
+
+    <section id="destinations">
+        <h2 class="section-title">Popular Destinations</h2>
+
+        <div class="destination-container">
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=700&q=80"
+                     alt="Taj Mahal in Agra">
+                <div class="card-content">
+                    <h3>Agra</h3>
+                    <p>Explore the magnificent Taj Mahal and India's rich history.</p>
+                    <p><strong>Duration:</strong> 2 Days / 1 Night</p>
+                    <p class="price">₹4,999</p>
+                    <a href="#contact" class="btn">Book Now</a>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=700&q=80"
+                     alt="Kerala backwaters">
+                <div class="card-content">
+                    <h3>Kerala</h3>
+                    <p>Enjoy peaceful backwaters, green landscapes and houseboats.</p>
+                    <p><strong>Duration:</strong> 4 Days / 3 Nights</p>
+                    <p class="price">₹12,999</p>
+                    <a href="#contact" class="btn">Book Now</a>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=700&q=80"
+                     alt="Goa beach">
+                <div class="card-content">
+                    <h3>Goa</h3>
+                    <p>Relax on beautiful beaches and explore Portuguese heritage.</p>
+                    <p><strong>Duration:</strong> 3 Days / 2 Nights</p>
+                    <p class="price">₹8,499</p>
+                    <a href="#contact" class="btn">Book Now</a>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=700&q=80"
+                     alt="Mountain scenery in Manali">
+                <div class="card-content">
+                    <h3>Manali</h3>
+                    <p>Experience mountain views, scenic valleys and cool weather.</p>
+                    <p><strong>Duration:</strong> 5 Days / 4 Nights</p>
+                    <p class="price">₹15,999</p>
+                    <a href="#contact" class="btn">Book Now</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="packages" id="packages">
+        <h2 class="section-title">Our Holiday Packages</h2>
+
+        <div class="destination-container">
+
+            <div class="destination-card">
+                <div class="card-content">
+                    <h3>Weekend Getaway</h3>
+                    <p>Destination: Agra</p>
+                    <p>Includes sightseeing and hotel accommodation.</p>
+                    <p><strong>Duration:</strong> 2 Days</p>
+                    <p class="price">₹4,999 / person</p>
+                    <a href="#contact" class="btn">Choose Package</a>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <div class="card-content">
+                    <h3>Beach Holiday</h3>
+                    <p>Destination: Goa</p>
+                    <p>Includes beach sightseeing and hotel accommodation.</p>
+                    <p><strong>Duration:</strong> 3 Days</p>
+                    <p class="price">₹8,499 / person</p>
+                    <a href="#contact" class="btn">Choose Package</a>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <div class="card-content">
+                    <h3>Nature Escape</h3>
+                    <p>Destination: Kerala</p>
+                    <p>Includes nature sightseeing and selected local experiences.</p>
+                    <p><strong>Duration:</strong> 4 Days</p>
+                    <p class="price">₹12,999 / person</p>
+                    <a href="#contact" class="btn">Choose Package</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="itinerary">
+        <h2 class="section-title">Sample Travel Itinerary</h2>
+
+        <div class="itinerary">
+            <h3>Day 1 - Arrival and Sightseeing</h3>
+            <p>Arrive at your destination, check into the hotel and visit popular local attractions.</p>
+        </div>
+
+        <div class="itinerary">
+            <h3>Day 2 - Local Exploration</h3>
+            <p>Explore famous landmarks, enjoy local food and experience the destination's culture.</p>
+        </div>
+
+        <div class="itinerary">
+            <h3>Day 3 - Leisure and Departure</h3>
+            <p>Enjoy free time for shopping and photography before departure.</p>
+        </div>
+    </section>
+
+    <section class="inquiry" id="contact">
+        <h2 class="section-title">Travel Inquiry Form</h2>
+
+        <form action="#" method="post">
+
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name"
+                   placeholder="Enter your full name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email"
+                   placeholder="Enter your email" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone"
+                   placeholder="Enter your phone number" required>
+
+            <label for="destination">Choose Destination</label>
+            <select id="destination" name="destination" required>
+                <option value="">-- Select Destination --</option>
+                <option value="Agra">Agra</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Goa">Goa</option>
+                <option value="Manali">Manali</option>
+            </select>
+
+            <label for="date">Travel Date</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="people">Number of Travelers</label>
+            <input type="number" id="people" name="people"
+                   min="1" max="50" value="1" required>
+
+            <label for="message">Additional Requirements</label>
+            <textarea id="message" name="message"
+                      placeholder="Tell us about your travel plans"></textarea>
+
+            <button type="submit" class="btn">Submit Inquiry</button>
+
+        </form>
+    </section>
+
+    <footer>
+        <h3>✈ Dream Travels</h3>
+        <p>Making Every Journey Memorable</p>
+        <p>Email: info@dreamtravels.example</p>
+        <p>Phone: +91 98765 43210</p>
+        <p>&copy; 2026 Dream Travels. All Rights Reserved.</p>
+        <p>Note: Package prices are sample values for this student project.</p>
+    </footer>
+
+</body>
+</html>
